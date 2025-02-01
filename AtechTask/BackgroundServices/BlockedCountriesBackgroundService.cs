@@ -23,7 +23,7 @@ namespace AtechTask.BackgroundServices
                         await _blockedCountryService.UnblockCountryAsync(country);
                     }
                 }
-                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+                await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
             }
         }
     }

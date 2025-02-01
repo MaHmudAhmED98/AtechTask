@@ -16,12 +16,15 @@ namespace AtechTask.Services
             }
             return Task.FromResult(false);
         }
-        public async Task<bool> IsCountryBlockedAsync(string countryCode)
+        public Task<bool> IsCountryBlockedAsync(string countryCode)
         {
+
+            if (_blockedCountries.ContainsKey(countryCode))
             {
-                var blockedCountries = await GetBlockedCountriesAsync(1, int.MaxValue);
-                return blockedCountries.Data.Contains(countryCode);
+                return Task.FromResult(true);
             }
+            return Task.FromResult(false);
+            
         }
         public Task<ApiResponse<bool>> BlockCountryAsync(string countryCode)
         {
